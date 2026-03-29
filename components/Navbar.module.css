@@ -78,6 +78,77 @@
     flex-shrink: 0;
 }
 
+/* --- DROPDOWN --- */
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 360px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px) scale(0.98);
+    transform-origin: top left;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.navItem:hover .dropdown,
+.navItem:focus-within .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.dropLink {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #4b5563;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.15s, color 0.15s;
+    line-height: 1.4;
+}
+
+.dropLink:hover {
+    background: #f3f4f6;
+}
+
+.dropIcon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    background: #f9fafb;
+    border-radius: 8px;
+    transition: background 0.15s, color 0.15s;
+    flex-shrink: 0;
+}
+
+.dropLink:hover .dropIcon {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.dropText {
+    flex: 1;
+}
+
 /* Actions */
 .actions {
     display: flex;
@@ -167,16 +238,46 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-.drawerLink {
-    padding: 12px 0;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #374151;
+.drawerGroup {
+    display: flex;
+    flex-direction: column;
     border-bottom: 1px solid #f3f4f6;
+}
+
+.drawerGroup:last-of-type {
+    border-bottom: none;
+}
+
+.drawerLink {
+    padding: 14px 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #374151;
+    text-decoration: none;
     transition: color 0.2s;
+    width: 100%;
 }
 
 .drawerLink:hover {
+    color: #7c3aed;
+}
+
+.drawerSub {
+    display: flex;
+    flex-direction: column;
+    padding-left: 16px;
+    padding-bottom: 12px;
+    gap: 16px;
+}
+
+.drawerSubLink {
+    font-size: 0.88rem;
+    color: #4b5563;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.drawerSubLink:hover {
     color: #7c3aed;
 }
 

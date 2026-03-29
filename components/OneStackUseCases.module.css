@@ -1,0 +1,359 @@
+.section {
+    background: #ffffff;
+    padding: 60px 24px 100px;
+    font-family: var(--font-family);
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.heading {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 500;
+    color: #111827;
+    text-align: center;
+    margin-bottom: 64px;
+    letter-spacing: -0.02em;
+}
+
+/* Gradient Container Box */
+.flowContainer {
+    position: relative;
+    background: linear-gradient(100deg, #ffe5dd 0%, #f3e8ff 50%, #e9d5ff 100%);
+    border-radius: 32px;
+    padding: 80px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 480px;
+}
+
+/* Flowchart Nodes */
+.node {
+    background: #ffffff;
+    border-radius: 9999px;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.05);
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+}
+
+.nodeDark {
+    background: #1e1b4b;
+    /* very dark purple */
+    color: #ffffff;
+}
+
+.star {
+    color: #8b5cf6;
+    font-size: 0.9rem;
+}
+
+/* Columns */
+.colStart,
+.colMid,
+.colEnd {
+    display: flex;
+    align-items: center;
+}
+
+.colStacked {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    margin-top: 50px;
+    /* space for headers */
+}
+
+/* Branching connectors */
+.branchLinesLeft {
+    width: 60px;
+    height: 200px;
+    border-top: 1.5px solid rgba(139, 92, 246, 0.4);
+    border-bottom: 1.5px solid rgba(139, 92, 246, 0.4);
+    border-left: 1.5px solid rgba(139, 92, 246, 0.4);
+    border-radius: 12px 0 0 12px;
+    position: relative;
+    margin-right: -1px;
+    /* overlap to fix gaps */
+}
+
+/* Middle branch lines inside branchLinesLeft */
+.branchLinesLeft::before {
+    content: '';
+    position: absolute;
+    top: 33.33%;
+    left: 0;
+    width: 100%;
+    border-top: 1.5px solid rgba(139, 92, 246, 0.4);
+}
+
+.branchLinesLeft::after {
+    content: '';
+    position: absolute;
+    top: 66.66%;
+    left: 0;
+    width: 100%;
+    border-top: 1.5px solid rgba(139, 92, 246, 0.4);
+}
+
+/* Connect from Smart Lead Qual to border-left mid */
+.hLine {
+    height: 1.5px;
+    background: rgba(139, 92, 246, 0.4);
+}
+
+.branchLinesRight {
+    width: 60px;
+    height: 200px;
+    border-top: 1.5px solid rgba(139, 92, 246, 0.4);
+    border-bottom: 1.5px solid rgba(139, 92, 246, 0.4);
+    border-right: 1.5px solid rgba(139, 92, 246, 0.4);
+    border-radius: 0 12px 12px 0;
+    position: relative;
+    margin-left: -1px;
+}
+
+.branchLinesRight::before {
+    content: '';
+    position: absolute;
+    top: 33.33%;
+    left: 0;
+    width: 100%;
+    border-top: 1.5px solid rgba(139, 92, 246, 0.4);
+}
+
+.branchLinesRight::after {
+    content: '';
+    position: absolute;
+    top: 66.66%;
+    left: 0;
+    width: 100%;
+    border-top: 1.5px solid rgba(139, 92, 246, 0.4);
+}
+
+/* Middle connect to Outcome */
+.branchLinesRight::after {
+    /* To draw the horizontal line from center of Right bracket to Outcome node */
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -40px;
+    width: 40px;
+    height: 1.5px;
+    background: rgba(139, 92, 246, 0.4);
+    display: none;
+    /* using colEnd margin instead for simplicity unless needed */
+}
+
+/* Bridges between Sales and Support columns */
+.bridges {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 66px;
+    margin: 0 -1px;
+    /* tight */
+    margin-top: 50px;
+}
+
+.vLineBridge {
+    width: 40px;
+    height: 1.5px;
+    background: rgba(139, 92, 246, 0.4);
+}
+
+.colEnd {
+    margin-left: 40px;
+}
+
+/* Headers (Sales / Support Pills) */
+.colHeader {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.arrowLabel {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.arrowLeft,
+.arrowRight {
+    color: #7c3aed;
+    font-size: 1.5rem;
+    position: relative;
+}
+
+.arrowLeft::after {
+    content: '';
+    position: absolute;
+    top: 11px;
+    left: 18px;
+    width: 80px;
+    height: 1.5px;
+    background: #7c3aed;
+}
+
+.arrowRight::before {
+    content: '';
+    position: absolute;
+    top: 11px;
+    right: 18px;
+    width: 80px;
+    height: 1.5px;
+    background: #7c3aed;
+}
+
+.pillLabel {
+    background: #8b5cf6;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 6px 20px;
+    border-radius: 9999px;
+    z-index: 2;
+}
+
+/* Floating Elements */
+.floatingIcon {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background: #e9d5ff;
+    /* purple glowing base */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 40px rgba(167, 139, 250, 0.5);
+}
+
+.floatingIcon::before {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: #ffffff;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.floatingIcon>* {
+    z-index: 1;
+}
+
+.iconProfileTop {
+    top: 25%;
+    left: 8%;
+}
+
+.iconProfileBottom {
+    bottom: 25%;
+    left: 8%;
+}
+
+.iconRupeeTop {
+    top: 25%;
+    right: 8%;
+}
+
+.iconRupeeBottom {
+    bottom: 25%;
+    right: 8%;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-15px) rotate(5deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+@keyframes floatDown {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(15px) rotate(-5deg);
+    }
+
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+.floatUp {
+    animation: floatUp 6s ease-in-out infinite;
+}
+
+.floatDown {
+    animation: floatDown 7s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+    .flowContainer {
+        flex-direction: column;
+        gap: 32px;
+        padding: 60px 24px;
+    }
+
+    .branchLinesLeft,
+    .branchLinesRight,
+    .bridges,
+    .hLine {
+        display: none;
+    }
+
+    .colHeader {
+        position: static;
+        transform: none;
+        width: 100%;
+        margin-bottom: 24px;
+    }
+
+    .arrowLeft::after,
+    .arrowRight::before {
+        display: none;
+    }
+
+    .colStacked {
+        margin-top: 0;
+    }
+
+    .colEnd {
+        margin-left: 0;
+    }
+
+    .floatingIcon {
+        display: none;
+    }
+
+    /* Hide on mobile to simplify layout */
+}

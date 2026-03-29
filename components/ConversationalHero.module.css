@@ -1,0 +1,168 @@
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 90vh;
+    background: #110c2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    overflow: hidden;
+    padding: 120px 24px 80px;
+    z-index: 1;
+}
+
+/* Background Auroras */
+.auroraBlob1 {
+    position: absolute;
+    top: -10%;
+    left: 10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(124, 58, 237, 0) 70%);
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+}
+
+.auroraBlob2 {
+    position: absolute;
+    bottom: -20%;
+    right: 5%;
+    width: 800px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(6, 182, 212, 0.15) 0%, rgba(124, 58, 237, 0.2) 40%, rgba(0, 0, 0, 0) 70%);
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+}
+
+/* Abstract Side Visuals */
+.leftVisual,
+.rightVisual {
+    position: absolute;
+    bottom: 0;
+    width: 300px;
+    height: 60%;
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.leftVisual {
+    left: 0;
+}
+
+.rightVisual {
+    right: 0;
+}
+
+.abstractFaceLeft {
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 10px 10px, rgba(230, 200, 255, 0.6) 2px, transparent 2px);
+    background-size: 20px 20px;
+    mask-image: radial-gradient(ellipse at center right, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center right, black 20%, transparent 70%);
+    opacity: 0.5;
+}
+
+.abstractFaceRight {
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 10px 10px, rgba(255, 230, 200, 0.6) 2px, transparent 2px);
+    background-size: 24px 24px;
+    mask-image: radial-gradient(ellipse at center left, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center left, black 20%, transparent 70%);
+    opacity: 0.5;
+}
+
+/* Content */
+.content {
+    position: relative;
+    max-width: 900px;
+    text-align: center;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #cbd5e1;
+    margin-bottom: 24px;
+    letter-spacing: 0.02em;
+}
+
+.sparkles {
+    font-size: 1.6rem;
+}
+
+.headline {
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #e2e8f0;
+    margin-bottom: 32px;
+}
+
+.subText {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+    max-width: 760px;
+    margin: 0 auto 48px;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+}
+
+.ctaBtn {
+    background: #7c3aed;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 16px 32px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.ctaBtn:hover {
+    background: #8b5cf6;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+
+    .leftVisual,
+    .rightVisual {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero {
+        padding: 100px 20px 60px;
+        min-height: 70vh;
+    }
+
+    .badge {
+        font-size: 1.1rem;
+    }
+
+    .subText {
+        font-size: 1.05rem;
+    }
+}
