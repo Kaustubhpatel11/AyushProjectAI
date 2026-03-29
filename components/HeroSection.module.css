@@ -453,7 +453,35 @@
     }
 
     .pillGrid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pill {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 18px 10px;
+        gap: 12px;
+    }
+
+    .pillIcon {
+        margin: 0 auto;
+        width: 24px;
+        height: 24px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pillIcon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .pill:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        max-width: 200px;
+        margin: 0 auto;
+        width: 100%;
     }
 
     .headline {

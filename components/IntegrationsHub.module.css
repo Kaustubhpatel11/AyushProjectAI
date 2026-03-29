@@ -31,13 +31,33 @@
 }
 
 /* SVG overlay for connector lines and glow */
-.connectorSvg {
+.connectorSvgDesktop {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
     z-index: 1;
+}
+
+/* Cards Wrapper */
+.cardsContainer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.cardsContainer>* {
+    pointer-events: auto;
+}
+
+.mobileRailTop,
+.mobileStubDotLeft,
+.mobileStubDotRight {
+    display: none;
 }
 
 /* Flowing dash animation on lines */
@@ -271,30 +291,125 @@
 }
 
 /* ===================================================
-   Responsive: collapse to 2-column grid on mobile
+   Responsive: collapse to vertical stack with rails on mobile
    =================================================== */
 @media (max-width: 900px) {
     .hubWrapper {
         aspect-ratio: unset;
         height: auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
         position: static;
     }
 
-    .connectorSvg {
+    .connectorSvgDesktop {
         display: none;
     }
 
     .centerHub {
-        display: none;
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        margin: 0 auto;
+        z-index: 3;
+    }
+
+    .cardsContainer {
+        position: relative;
+        width: 100%;
+        max-width: 440px;
+        margin: 30px auto 0;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 24px 20px 0;
+        border-top: 1.5px dashed rgba(167, 139, 250, 0.4);
+        border-left: 1.5px dashed rgba(167, 139, 250, 0.4);
+        border-right: 1.5px dashed rgba(167, 139, 250, 0.4);
+        border-radius: 20px 20px 0 0;
+        pointer-events: auto;
+    }
+
+    .cardsContainer::before,
+    .cardsContainer::after {
+        content: '';
+        position: absolute;
+        top: -4px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #b794f4;
+    }
+
+    .cardsContainer::before {
+        left: -4px;
+    }
+
+    .cardsContainer::after {
+        right: -4px;
+    }
+
+    .mobileRailTop {
+        display: block;
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        width: 1px;
+        height: 30px;
+        border-left: 1.5px dashed rgba(167, 139, 250, 0.4);
     }
 
     .card {
-        position: static;
-        width: auto !important;
+        position: relative;
+        width: 100% !important;
         transform: none !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+    }
+
+    .mobileStubDotLeft,
+    .mobileStubDotRight {
+        display: block;
+        position: absolute;
+        top: 50%;
+        width: 20px;
+        height: 1px;
+        border-top: 1.5px dashed rgba(167, 139, 250, 0.4);
+    }
+
+    .mobileStubDotLeft {
+        left: -20px;
+    }
+
+    .mobileStubDotLeft::before {
+        content: '';
+        position: absolute;
+        left: -4px;
+        top: -3px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #b794f4;
+    }
+
+    .mobileStubDotRight {
+        right: -20px;
+    }
+
+    .mobileStubDotRight::after {
+        content: '';
+        position: absolute;
+        right: -4px;
+        top: -3px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #b794f4;
     }
 
     .section {

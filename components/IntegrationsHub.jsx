@@ -63,9 +63,9 @@ export default function IntegrationsHub() {
 
                 <div className={styles.hubWrapper}>
 
-                    {/* SVG Connector Lines */}
+                    {/* SVG Connector Lines (Desktop) */}
                     <svg
-                        className={styles.connectorSvg}
+                        className={styles.connectorSvgDesktop}
                         viewBox="0 0 1000 520"
                         preserveAspectRatio="xMidYMid meet"
                         aria-hidden="true"
@@ -114,33 +114,42 @@ export default function IntegrationsHub() {
                         </svg>
                     </div>
 
-                    {/* Integration Cards */}
-                    {cardDefs.map((card) => (
-                        <div key={card.id} className={`${styles.card} ${styles[card.pos]}`}>
-                            {/* Category label */}
-                            <div className={`${styles.label} ${card.isCustom ? styles.labelCustom : ''}`}>
-                                {card.label}
-                            </div>
+                    {/* Integration Cards Container */}
+                    <div className={styles.cardsContainer}>
+                        {/* Mobile Top Rail (drops from orb to horizontal rail) */}
+                        <div className={styles.mobileRailTop} />
 
-                            {/* Items */}
-                            {card.isList ? (
-                                <ul className={styles.bulletList}>
-                                    {card.items.map(it => (
-                                        <li key={it.name} className={styles.bulletItem}>{it.name}</li>
-                                    ))}
-                                </ul>
-                            ) : (
-                                <div className={`${styles.items} ${card.items.length <= 3 ? styles.itemsCol : ''}`}>
-                                    {card.items.map(it => (
-                                        <div key={it.name} className={`${styles.item} ${it.plain ? styles.itemPlain : ''}`}>
-                                            {!it.plain && <span className={styles.icon} />}
-                                            <span className={styles.itemName}>{it.name}</span>
-                                        </div>
-                                    ))}
+                        {cardDefs.map((card) => (
+                            <div key={card.id} className={`${styles.card} ${styles[card.pos]}`}>
+                                {/* Mobile Stubs and Dots */}
+                                <div className={styles.mobileStubDotLeft} />
+                                <div className={styles.mobileStubDotRight} />
+
+                                {/* Category label */}
+                                <div className={`${styles.label} ${card.isCustom ? styles.labelCustom : ''}`}>
+                                    {card.label}
                                 </div>
-                            )}
-                        </div>
-                    ))}
+
+                                {/* Items */}
+                                {card.isList ? (
+                                    <ul className={styles.bulletList}>
+                                        {card.items.map(it => (
+                                            <li key={it.name} className={styles.bulletItem}>{it.name}</li>
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    <div className={`${styles.items} ${card.items.length <= 3 ? styles.itemsCol : ''}`}>
+                                        {card.items.map(it => (
+                                            <div key={it.name} className={`${styles.item} ${it.plain ? styles.itemPlain : ''}`}>
+                                                {!it.plain && <span className={styles.icon} />}
+                                                <span className={styles.itemName}>{it.name}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </div>
 
                 </div>
             </div>
