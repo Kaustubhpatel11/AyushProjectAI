@@ -1,0 +1,335 @@
+.section {
+    background: #fff;
+    padding: 80px 24px 60px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.heading {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.subtext {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 56px;
+}
+
+.link {
+    color: #7c3aed;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+/* Illustration Wrapper */
+.illusWrapper {
+    position: relative;
+    height: 420px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bgBlob {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 50%, #e9d5ff 100%);
+    border-radius: 32px;
+    z-index: 0;
+}
+
+/* Browser Mock */
+.browserMock {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    width: 420px;
+    max-width: 90%;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+}
+
+.browserBar {
+    background: #f3f4f6;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.bDots {
+    display: flex;
+    gap: 4px;
+}
+
+.bDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.bUrl {
+    flex: 1;
+    background: #fff;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 0.7rem;
+    color: #6b7280;
+    border: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+.browserContent {
+    background: linear-gradient(160deg, #0d0a1f, #2d1f6e);
+    padding: 0;
+    min-height: 220px;
+    position: relative;
+}
+
+.mockHeader {
+    padding: 16px;
+}
+
+.mockNav {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.mockHero {
+    text-align: left;
+}
+
+.mockHeroText {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 8px;
+}
+
+.mockHeroTag {
+    display: inline-block;
+    background: #7c3aed;
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.08em;
+}
+
+/* AI Call Widget */
+.callWidget {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    padding: 10px 16px 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 240px;
+}
+
+.callAvatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7c3aed, #5b21b6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.callAvatarInner {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.callInfo {
+    flex: 1;
+    text-align: left;
+}
+
+.callName {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.callTimer {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-variant-numeric: tabular-nums;
+}
+
+.callEndBtn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #ef4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transform: rotate(135deg);
+    transition: transform 0.2s;
+}
+
+.callEndBtn:hover {
+    transform: rotate(135deg) scale(1.1);
+}
+
+/* Feature Cards */
+.featureCard {
+    position: absolute;
+    z-index: 3;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    max-width: 200px;
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.12);
+    animation: float 4s ease-in-out infinite;
+}
+
+.left {
+    left: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation-delay: 0s;
+}
+
+.topRight {
+    right: 24px;
+    top: 24px;
+    animation-delay: 1.5s;
+}
+
+.bottomRight {
+    right: 24px;
+    bottom: 24px;
+    animation-delay: 0.75s;
+}
+
+.featureIcon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.featureTitle {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #1f2937;
+    line-height: 1.4;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateY(-50%) translateY(-8px);
+    }
+}
+
+.topRight,
+.bottomRight {
+    animation-name: floatSimple;
+}
+
+@keyframes floatSimple {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.ctaRow {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.ctaBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #1a1040;
+    color: #fff;
+    border-radius: 9999px;
+    padding: 15px 36px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.25s;
+}
+
+.ctaBtn:hover {
+    background: #2d1f6e;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
+}
+
+@media (max-width: 900px) {
+    .featureCard {
+        display: none;
+    }
+
+    .illusWrapper {
+        height: auto;
+    }
+
+    .bgBlob {
+        display: none;
+    }
+
+    .browserMock {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media (max-width: 600px) {
+    .section {
+        padding: 60px 16px 40px;
+    }
+
+    .browserMock {
+        width: 100%;
+    }
+}

@@ -1,66 +1,66 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+import useScrollReveal from '@/hooks/useScrollReveal';
+import AnnouncementBanner from '@/components/AnnouncementBanner';
+import Navbar from '@/components/Navbar';
+import HeroSection from '@/components/HeroSection';
+import ClientLogos from '@/components/ClientLogos';
+import CaseStudies from '@/components/CaseStudies';
+import StatsSection from '@/components/StatsSection';
+import HumanLikeAI from '@/components/HumanLikeAI';
+import VoiceAI from '@/components/VoiceAI';
+import TechStack from '@/components/TechStack';
+import SecuritySection from '@/components/SecuritySection';
+import IntegrationsHub from '@/components/IntegrationsHub';
+import FooterCTA from '@/components/FooterCTA';
+import Footer from '@/components/Footer';
 
 export default function Home() {
+  useScrollReveal();
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <>
+      <AnnouncementBanner />
+      <Navbar />
+      <main>
+        <HeroSection />
+
+        <div className="reveal">
+          <ClientLogos />
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="reveal">
+          <CaseStudies />
+        </div>
+
+        <div className="reveal">
+          <StatsSection />
+        </div>
+
+        <div className="reveal">
+          <HumanLikeAI />
+        </div>
+
+        <div className="reveal">
+          <VoiceAI />
+        </div>
+
+        <div className="reveal">
+          <TechStack />
+        </div>
+
+        <div className="reveal">
+          <SecuritySection />
+        </div>
+
+        <div className="reveal">
+          <IntegrationsHub />
+        </div>
+
+        <div className="reveal">
+          <FooterCTA />
         </div>
       </main>
-    </div>
+      <Footer />
+    </>
   );
 }
