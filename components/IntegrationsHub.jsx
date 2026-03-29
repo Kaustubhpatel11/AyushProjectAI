@@ -1,41 +1,59 @@
 import styles from './IntegrationsHub.module.css';
 
+// Card definitions with SVG line connection point (in 1000x520 viewBox)
 const cardDefs = [
     {
-        id: 'crms', label: 'CRMs', pos: 'topLeft',
-        items: ['Salesforce', 'LeadSquared', 'Zoho', 'Kylas', 'Freshsales', '+ more'],
-        // line connects from right edge mid of this card to center
-        lineX: 222, lineY: 118,
+        id: 'crms', pos: 'topLeft', label: 'CRMs',
+        lineX: 230, lineY: 110,
+        items: [
+            { name: 'Salesforce' }, { name: 'LeadSquared' },
+            { name: 'Zoho' }, { name: 'Kylas' },
+            { name: 'Freshsales' }, { name: '+ more', plain: true },
+        ],
     },
     {
-        id: 'ticketing', label: 'Ticketing & Support', pos: 'top',
-        items: ['Freshdesk', 'Zendesk', 'Intercom'],
-        lineX: 490, lineY: 132,
+        id: 'ticketing', pos: 'top', label: 'Ticketing & Support',
+        lineX: 500, lineY: 152,
+        items: [
+            { name: 'Freshdesk' }, { name: 'Zendesk' },
+            { name: 'Intercom' },
+        ],
     },
     {
-        id: 'dialers', label: 'Dialers & Communication', pos: 'topRight',
-        items: ['Exotel', 'Knowlarity', 'Ozonetel', 'Gupshup'],
-        lineX: 758, lineY: 118,
+        id: 'dialers', pos: 'topRight', label: 'Dialers & Communication',
+        lineX: 770, lineY: 110,
+        items: [
+            { name: 'Exotel' }, { name: 'Knowlarity' },
+            { name: 'Ozonetel' }, { name: 'Gupshup' },
+        ],
     },
     {
-        id: 'data', label: 'Data & Reporting', pos: 'bottomLeft',
-        items: ['BigQuery', 'Redshift', 'AWS S3'],
-        lineX: 222, lineY: 400,
+        id: 'data', pos: 'bottomLeft', label: 'Data & Reporting',
+        lineX: 230, lineY: 395,
+        items: [
+            { name: 'BigQuery' }, { name: 'Redshift' },
+            { name: 'AWS S3' },
+        ],
     },
     {
-        id: 'custom', label: 'Custom', pos: 'bottom',
-        items: ['Add Your Own'], isCustom: true,
-        lineX: 490, lineY: 385,
+        id: 'custom', pos: 'bottom', label: 'Custom',
+        lineX: 500, lineY: 402,
+        items: [{ name: 'Add Your Own', plain: true }],
+        isCustom: true,
     },
     {
-        id: 'apis', label: 'Lead & Workflow APIs', pos: 'bottomRight',
-        items: ['Webhooks', 'JSON APIs', '3rd-Party Connectors'],
-        lineX: 758, lineY: 400,
+        id: 'apis', pos: 'bottomRight', label: 'Lead & Workflow APIs',
+        lineX: 770, lineY: 395,
+        items: [
+            { name: 'Webhooks' }, { name: 'JSON APIs' },
+            { name: '3rd-Party Connectors' },
+        ],
+        isList: true,
     },
 ];
 
-// Center hub coordinates in the SVG viewBox (980 x 520)
-const CX = 490, CY = 260;
+// Center hub coords in 1000×520 SVG space
+const CX = 500, CY = 260;
 
 export default function IntegrationsHub() {
     return (
@@ -44,87 +62,86 @@ export default function IntegrationsHub() {
                 <h2 className={styles.heading}>Seamless Integrations, Zero Friction</h2>
 
                 <div className={styles.hubWrapper}>
-                    {/* SVG Connector Lines — sits behind everything */}
+
+                    {/* SVG Connector Lines */}
                     <svg
                         className={styles.connectorSvg}
-                        viewBox="0 0 980 520"
+                        viewBox="0 0 1000 520"
                         preserveAspectRatio="xMidYMid meet"
                         aria-hidden="true"
                     >
                         <defs>
-                            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stopColor="#6366f1" stopOpacity="0.6" />
-                                <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.6" />
-                            </linearGradient>
-                            <filter id="lineGlow">
-                                <feGaussianBlur stdDeviation="2" result="blur" />
-                                <feMerge>
-                                    <feMergeNode in="blur" />
-                                    <feMergeNode in="SourceGraphic" />
-                                </feMerge>
-                            </filter>
+                            <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" stopColor="#ffffff" stopOpacity="1" />
+                                <stop offset="35%" stopColor="#e8d5ff" stopOpacity="0.9" />
+                                <stop offset="70%" stopColor="#9f7aea" stopOpacity="0.4" />
+                                <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
+                            </radialGradient>
                         </defs>
 
+                        {/* Glow halo behind center */}
+                        <circle cx={CX} cy={CY} r="110" fill="url(#hubGlow)" opacity="0.35" />
+
+                        {/* Connector lines */}
                         {cardDefs.map((card) => (
                             <g key={card.id}>
-                                {/* Glow line underneath */}
                                 <line
                                     x1={CX} y1={CY}
                                     x2={card.lineX} y2={card.lineY}
-                                    stroke="#6366f1"
-                                    strokeWidth="3"
-                                    strokeOpacity="0.12"
-                                    filter="url(#lineGlow)"
-                                />
-                                {/* Main animated dashed line */}
-                                <line
-                                    x1={CX} y1={CY}
-                                    x2={card.lineX} y2={card.lineY}
-                                    stroke="url(#lineGrad)"
+                                    stroke="rgba(180,160,255,0.35)"
                                     strokeWidth="1.5"
-                                    strokeDasharray="6 5"
-                                    strokeOpacity="0.65"
                                     className={styles.connectorLine}
                                 />
-                                {/* Endpoint dot on the card side */}
+                                {/* Endpoint dot on card side */}
                                 <circle
                                     cx={card.lineX} cy={card.lineY}
-                                    r="4"
-                                    fill="#06b6d4"
-                                    fillOpacity="0.8"
+                                    r="4" fill="#b794f4" fillOpacity="0.9"
                                     className={styles.connectorDot}
                                 />
                             </g>
                         ))}
-
-                        {/* Center hub dot (behind the center card) */}
-                        <circle cx={CX} cy={CY} r="40" fill="rgba(99,102,241,0.08)" />
-                        <circle cx={CX} cy={CY} r="26" fill="rgba(99,102,241,0.14)" className={styles.centerPulse} />
                     </svg>
 
-                    {/* Center Node */}
-                    <div className={`${styles.card} ${styles.center}`}>
-                        <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
-                            <rect x="2" y="2" width="15" height="15" rx="3" fill="#6366f1" />
-                            <rect x="21" y="2" width="15" height="15" rx="3" fill="#6366f1" opacity="0.7" />
-                            <rect x="2" y="21" width="15" height="15" rx="3" fill="#6366f1" opacity="0.7" />
-                            <rect x="21" y="21" width="15" height="15" rx="3" fill="#6366f1" opacity="0.4" />
+                    {/* Center Hub */}
+                    <div className={styles.centerHub}>
+                        <div className={styles.centerGlow} />
+                        <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+                            {/* Stack/layers icon matching the reference */}
+                            <path d="M21 6 L36 14 L21 22 L6 14 Z" fill="rgba(80,60,140,0.9)" stroke="rgba(120,100,200,0.6)" strokeWidth="0.8" />
+                            <path d="M6 14 L6 22 L21 30 L36 22 L36 14 L21 22 Z" fill="rgba(60,45,120,0.85)" stroke="rgba(120,100,200,0.5)" strokeWidth="0.8" />
+                            <path d="M6 22 L6 28 L21 36 L36 28 L36 22 L21 30 Z" fill="rgba(45,35,100,0.8)" stroke="rgba(120,100,200,0.4)" strokeWidth="0.8" />
+                            <ellipse cx="21" cy="14" rx="15" ry="4" fill="rgba(180,160,255,0.25)" />
                         </svg>
                     </div>
 
                     {/* Integration Cards */}
                     {cardDefs.map((card) => (
                         <div key={card.id} className={`${styles.card} ${styles[card.pos]}`}>
-                            <div className={`${styles.cardHeader} ${card.isCustom ? styles.cardHeaderCustom : ''}`}>
+                            {/* Category label */}
+                            <div className={`${styles.label} ${card.isCustom ? styles.labelCustom : ''}`}>
                                 {card.label}
                             </div>
-                            <div className={styles.cardItems}>
-                                {card.items.map(item => (
-                                    <div key={item} className={styles.item}>{item}</div>
-                                ))}
-                            </div>
+
+                            {/* Items */}
+                            {card.isList ? (
+                                <ul className={styles.bulletList}>
+                                    {card.items.map(it => (
+                                        <li key={it.name} className={styles.bulletItem}>{it.name}</li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <div className={`${styles.items} ${card.items.length <= 3 ? styles.itemsCol : ''}`}>
+                                    {card.items.map(it => (
+                                        <div key={it.name} className={`${styles.item} ${it.plain ? styles.itemPlain : ''}`}>
+                                            {!it.plain && <span className={styles.icon} />}
+                                            <span className={styles.itemName}>{it.name}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     ))}
+
                 </div>
             </div>
         </section>

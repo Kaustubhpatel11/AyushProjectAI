@@ -1,317 +1,545 @@
+/* Section — light/white background matching reference */
 .section {
     background: #fff;
-    padding: 80px 24px;
-}
-
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
+    padding: 80px 24px 60px;
 }
 
 .heading {
     text-align: center;
-    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-    font-weight: 700;
-    color: #111827;
+    font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+    font-weight: 600;
+    color: #1e1b4b;
     margin-bottom: 48px;
+    letter-spacing: -0.015em;
 }
 
-/* Top Cards */
-.topCards {
+/* Main diagram wrapper */
+.diagramWrap {
+    position: relative;
+    max-width: 1060px;
+    margin: 0 auto;
+}
+
+/* SVG connector overlay */
+.connectorSvg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ============================================================
+   TOP ROW
+   ============================================================ */
+.topRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 2;
+    padding: 0 4px;
+}
+
+/* Connectivity Engine + Omnichannel card */
+.topLeftCard {
+    background: linear-gradient(135deg, #faf5ff 0%, #f5f3ff 100%);
+    border: 1.5px dashed #c4b5fd;
+    border-radius: 20px;
+    padding: 20px 22px;
     display: flex;
+    align-items: center;
+    gap: 20px;
+    min-height: 160px;
+}
+
+/* Lead Avatars + Engine Info group */
+.connectEngineBox {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    flex-shrink: 0;
+}
+
+.leadAvatars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.leadAvatar {
+    position: relative;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 32px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
+    overflow: visible;
 }
 
-.infoCard {
-    background: #faf5ff;
-    border: 1px solid #ede9fe;
-    border-radius: 16px;
-    padding: 20px 24px;
-    min-width: 220px;
-    max-width: 300px;
-    flex: 1;
-}
-
-.infoCardTitle {
-    font-size: 0.85rem;
+.avatarNum {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #6366f1;
+    color: #fff;
+    font-size: 0.6rem;
     font-weight: 700;
-    color: #5b21b6;
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.infoTag {
+.engineInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.engineTitle {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #4c1d95;
+    margin-bottom: 4px;
+    white-space: nowrap;
+}
+
+.engineBadge {
     display: inline-block;
-    background: #fff;
-    border: 1px solid #ddd6fe;
-    border-radius: 8px;
-    padding: 4px 10px;
-    font-size: 0.75rem;
-    color: #374151;
-    margin: 3px 4px 3px 0;
+    background: #ede9fe;
+    border: 1px solid #c4b5fd;
+    color: #6d28d9;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 6px;
 }
 
-.infoCardSep {
-    height: 1px;
-    background: #ede9fe;
-    margin: 12px 0;
+/* Omnichannel section */
+.omniBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.omniOrb {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #e9d5ff, #ddd6fe, rgba(200, 180, 255, 0.3));
+    border: 2px solid rgba(167, 139, 250, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(167, 139, 250, 0.25);
+}
+
+.omniOrbInner {
+    font-size: 1.4rem;
 }
 
 .omniLabel {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #5b21b6;
+}
+
+.omniChannels {
+    display: flex;
+    gap: 4px;
+    font-size: 0.85rem;
+}
+
+/* Quality Audits Card */
+.topRightCard {
+    background: linear-gradient(135deg, #faf5ff 0%, #f5f3ff 100%);
+    border: 1.5px dashed #c4b5fd;
+    border-radius: 20px;
+    padding: 20px 24px;
+    min-height: 160px;
+}
+
+.qualityTitle {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #4c1d95;
+    margin-bottom: 16px;
+}
+
+.qualityContent {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.donutWrap {
+    flex-shrink: 0;
+}
+
+.qualityStats {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.qualityStat {
+    font-size: 0.78rem;
+    color: #374151;
+    font-weight: 500;
+}
+
+/* ============================================================
+   PIPELINE ROW
+   ============================================================ */
+.pipelineRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 24px 0;
+    position: relative;
+    z-index: 2;
+}
+
+/* Leads node */
+.leadsNode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+    padding: 0 8px;
+}
+
+.leadsAvatars {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #c4b5fd;
+}
+
+.leadsLabel {
     font-size: 0.8rem;
     font-weight: 600;
-    color: #7c3aed;
-    margin-bottom: 6px;
+    color: #374151;
 }
 
-.omniIcons {
+/* Dashed pipeline arrow */
+.arrow {
+    flex-shrink: 0;
+    height: 2px;
+    width: 28px;
+    border-top: 2px dashed #c4b5fd;
+    position: relative;
+}
+
+.arrow::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: -5px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid #a78bfa;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+}
+
+/* Stage wrapper */
+.stageGroup {
     display: flex;
-    gap: 8px;
-    font-size: 1.1rem;
+    align-items: center;
+    gap: 0;
+    flex-shrink: 0;
 }
 
-.infoRow {
+/* Stage pill node */
+.stageNode {
+    background: linear-gradient(135deg, #6366f1, #7c3aed);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 10px 16px;
+    border-radius: 9999px;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+}
+
+.stageNode:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.45);
+}
+
+/* Outcomes node */
+.outcomesNode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+    padding: 0 8px;
+}
+
+.outcomesIcons {
+    display: flex;
+    gap: 2px;
+    font-size: 0.9rem;
+    color: #6366f1;
+}
+
+.outIcon {
+    font-variant-numeric: tabular-nums;
+}
+
+.outcomesLabel {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+/* ============================================================
+   BOTTOM ROW
+   ============================================================ */
+.bottomRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 16px;
+    align-items: start;
+    position: relative;
+    z-index: 2;
+    padding: 0 4px;
+}
+
+/* Human Agents Card */
+.humanCard {
+    background: linear-gradient(135deg, #faf5ff 0%, #f5f3ff 100%);
+    border: 1.5px dashed #c4b5fd;
+    border-radius: 20px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.humanAgentsRow {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.donut {
-    flex-shrink: 0;
-}
-
-.qualityRow {
-    font-size: 0.75rem;
-    color: #374151;
-    margin-bottom: 4px;
-}
-
-/* Pipeline */
-.pipeline {
+.humanPhotos {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    padding: 20px 0;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    gap: -8px;
 }
 
-.pipeline::-webkit-scrollbar {
-    display: none;
-}
-
-.pipelineStart {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
-}
-
-.leadsNode {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.userIcon {
-    font-size: 0.9rem;
-    line-height: 1;
-}
-
-.leadsLabel {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #6b7280;
-}
-
-.pipelineLine {
-    height: 2px;
-    width: 24px;
-    background: linear-gradient(to right, #7c3aed, #a78bfa);
-    flex-shrink: 0;
-}
-
-.pipelineStageWrapper {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-}
-
-.stageNode {
-    border-radius: 9999px;
-    padding: 10px 18px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: #fff;
-    white-space: nowrap;
-    box-shadow: 0 4px 16px rgba(124, 58, 237, 0.3);
-    flex-shrink: 0;
-}
-
-.outcomeNode {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    flex-shrink: 0;
-}
-
-.outcomeLabel {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #6b7280;
-}
-
-.outcomeIcons {
-    display: flex;
-    gap: 4px;
-}
-
-.outIcon {
-    font-size: 1rem;
-    color: #7c3aed;
-}
-
-/* Bottom Cards */
-.bottomCards {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    margin-top: 20px;
-    flex-wrap: wrap;
-}
-
-.agentRow {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-}
-
-.agentAvatar {
-    width: 28px;
-    height: 28px;
+.humanAvatar {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    color: #fff;
-    font-size: 0.75rem;
-    font-weight: 700;
+    border: 2px solid #fff;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-left: -8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
     flex-shrink: 0;
 }
 
-.agentText {
+.humanPhotos .humanAvatar:first-child {
+    margin-left: 0;
+}
+
+.humanLabel {
     font-size: 0.75rem;
+    font-weight: 600;
     color: #374151;
 }
 
-.aiWave {
+.aiAgentRow {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin-top: 8px;
+    gap: 10px;
 }
 
-.aiWaveIcon {
-    font-size: 1.1rem;
+.aiOrbSmall {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #c4b5fd, #6366f1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
+    flex-shrink: 0;
 }
 
-.waveBars {
+/* Waveform */
+.waveform {
     display: flex;
     align-items: center;
     gap: 2px;
-    height: 20px;
+    height: 36px;
 }
 
 .waveBar {
     width: 3px;
-    background: #7c3aed;
+    background: linear-gradient(to top, #6366f1, #a5b4fc);
     border-radius: 2px;
     animation: wavePulse 1.2s ease-in-out infinite alternate;
 }
 
 @keyframes wavePulse {
     from {
-        transform: scaleY(0.5);
+        transform: scaleY(0.4);
+        opacity: 0.6;
     }
 
     to {
         transform: scaleY(1);
+        opacity: 1;
     }
 }
 
-.abRow {
+/* A/B Testing + VoC Insights Card */
+.abVocCard {
+    background: linear-gradient(135deg, #faf5ff 0%, #f0fdf4 100%);
+    border: 1.5px dashed #c4b5fd;
+    border-radius: 20px;
+    padding: 18px 20px;
     display: flex;
-    gap: 20px;
+    gap: 16px;
     align-items: flex-start;
 }
 
-.abChart {
+.abSection {
+    flex: 1;
+}
+
+.abTitle,
+.vocTitle {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.abChartWrap {
+    position: relative;
+}
+
+.abBadges {
+    display: flex;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.abBadge {
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vocSection {
+    flex: 1;
+}
+
+.vocBarsWrap {
     display: flex;
     align-items: flex-end;
     gap: 4px;
-    height: 40px;
-    margin-top: 8px;
-}
-
-.abBarA {
-    width: 16px;
-    height: 28px;
-    background: #7c3aed;
-    border-radius: 3px 3px 0 0;
-}
-
-.abBarB {
-    width: 16px;
-    height: 40px;
-    background: #a78bfa;
-    border-radius: 3px 3px 0 0;
-}
-
-.vocBars {
-    display: flex;
-    align-items: flex-end;
-    gap: 3px;
-    height: 40px;
-    margin-top: 8px;
+    height: 72px;
 }
 
 .vocBar {
-    width: 12px;
-    background: linear-gradient(to top, #7c3aed, #c4b5fd);
+    flex: 1;
+    background: linear-gradient(to top, #6366f1, #a5b4fc);
     border-radius: 3px 3px 0 0;
+    transition: height 0.3s;
 }
 
-.feedbackTag {
-    margin-top: 12px;
-    font-size: 0.75rem;
+/* Feedback Loop */
+.feedbackLoop {
+    font-size: 0.78rem;
     font-weight: 600;
-    color: #7c3aed;
-    border: 1px dashed #a78bfa;
-    padding: 4px 10px;
-    border-radius: 6px;
-    display: inline-block;
+    color: #6b7280;
+    text-align: right;
+    line-height: 1.4;
+    align-self: flex-end;
+    padding: 4px 0 0 0;
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
-@media (max-width: 768px) {
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 900px) {
 
-    .topCards,
-    .bottomCards {
-        gap: 16px;
+    .topRow,
+    .bottomRow {
+        grid-template-columns: 1fr;
     }
 
-    .pipeline {
+    .pipelineRow {
+        flex-wrap: nowrap;
+        overflow-x: auto;
         justify-content: flex-start;
+        padding-bottom: 8px;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 
+    .pipelineRow::-webkit-scrollbar {
+        display: none;
+    }
+
+    .connectorSvg {
+        display: none;
+    }
+
+    .bottomRow {
+        grid-template-columns: 1fr;
+    }
+
+    .feedbackLoop {
+        text-align: left;
+    }
+}
+
+@media (max-width: 600px) {
     .section {
-        padding: 60px 16px;
+        padding: 60px 16px 40px;
+    }
+
+    .stageNode {
+        font-size: 0.7rem;
+        padding: 8px 12px;
+    }
+
+    .arrow {
+        width: 16px;
     }
 }
