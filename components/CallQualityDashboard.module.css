@@ -1,0 +1,260 @@
+.section {
+    background: #f8fafc;
+    /* subtle light slate */
+    padding: 100px 24px;
+    font-family: var(--font-family);
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+/* Left Content */
+.textContent {
+    flex: 1;
+    max-width: 400px;
+}
+
+.title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+}
+
+.description {
+    font-size: 1.15rem;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+/* Right Dashboard Graphic Setup */
+.mockupWrapper {
+    flex: 1.5;
+    position: relative;
+    height: 600px;
+    display: flex;
+    align-items: center;
+}
+
+.sideNavMock {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 250px;
+    height: 550px;
+    background: #1e1b4b;
+    /* deep slate/purple */
+    border-radius: 12px;
+    padding: 24px 0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.navTop {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 0 24px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navLogo {
+    color: #10b981;
+}
+
+.navItems {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.navItem {
+    color: #94a3b8;
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: default;
+}
+
+.navActive {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-right: 3px solid #7c3aed;
+}
+
+/* Main Frontend Card Overlay */
+.dashboardCard {
+    position: absolute;
+    left: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 700px;
+    height: 500px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    z-index: 2;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* KPIs */
+.kpiRow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.kpiBox {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    background: #f8fafc;
+}
+
+.kpiLabel {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #64748b;
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+}
+
+.kpiValue {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+/* Tables */
+.tablesRow {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.tableBox {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.tableTitle {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #334155;
+    margin-bottom: 12px;
+}
+
+.tableHeader {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 4px;
+}
+
+.tableRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: #475569;
+    padding: 6px 0;
+    font-weight: 500;
+}
+
+.tableRow>span {
+    flex: 1;
+}
+
+.tableRow>span:nth-child(2),
+.tableRow>span:nth-child(3) {
+    text-align: right;
+}
+
+/* Bottom Charts */
+.chartsRow {
+    flex: 1;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chartTitle {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #334155;
+    margin-bottom: 16px;
+}
+
+.chartMockArea {
+    flex: 1;
+    border-left: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: flex-end;
+    padding-left: 16px;
+}
+
+.barGroup {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 100%;
+}
+
+.bar {
+    width: 24px;
+    border-radius: 2px 2px 0 0;
+}
+
+@media (max-width: 1000px) {
+    .container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .textContent {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .mockupWrapper {
+        width: 100%;
+        height: 600px;
+        justify-content: center;
+    }
+
+    .sideNavMock {
+        display: none;
+    }
+
+    .dashboardCard {
+        position: relative;
+        left: 0;
+        top: 0;
+        transform: none;
+        width: 100%;
+        max-width: 700px;
+    }
+}

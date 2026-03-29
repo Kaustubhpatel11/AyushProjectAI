@@ -1,0 +1,132 @@
+.section {
+    background: #ffffff;
+    /* Base assumes white, alternating can be customized via props/wrappers */
+    padding: 100px 24px;
+    font-family: var(--font-family);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.reversed .container {
+    flex-direction: row-reverse;
+}
+
+.textContent {
+    flex: 1;
+}
+
+.label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #581c87;
+    /* dark purple */
+    letter-spacing: 0.05em;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+.title {
+    font-size: clamp(2rem, 3vw, 2.75rem);
+    font-weight: 600;
+    color: #111827;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+}
+
+.description {
+    font-size: 1.15rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.featureLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #7c3aed;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.featureLink::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #7c3aed;
+    transition: width 0.2s;
+}
+
+.featureLink:hover::after {
+    width: 100%;
+}
+
+.mediaContent {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Custom Mockup Overrides (to be injected as ReactNode) */
+.mediaPlaceholderBox {
+    width: 100%;
+    height: 480px;
+    background: #f3f4f6;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+.graphicCircle {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: #ecfdf5;
+    /* subtle light green */
+    border-radius: 50%;
+    z-index: 0;
+    top: -50px;
+    left: -50px;
+}
+
+.graphicImage {
+    z-index: 1;
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .reversed .container {
+        flex-direction: column;
+    }
+
+    .mediaContent {
+        width: 100%;
+    }
+}
